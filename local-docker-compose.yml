@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "33062:3306"
+
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
+  
+  # redis:
+  #   image: redis/redis-stack:latest
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"  # Redis port
+  #     - "8001:8001"  # Redis Insight port
+
+  django_web:
+    container_name: django_web_1
+    build: 
+      context: .
+      dockerfile: local-Dockerfile
+    command: sh -c "python manage.py migrate && python manage.py admin_config  && python manage.py runserver 0.0.0.0:5000"
+    env_file:
+      - .env
+    volumes:
+      - .:/home/django/
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+  
+  # django_channels:
+  #   container_name: django_channels
+  #   build: 
+  #     context: .
+  #     dockerfile: local-Dockerfile
+  #   command: sh -c "python manage.py runserver 0.0.0.0:5001"
+  #   env_file:
+  #     - channels.env
+  #   volumes:
+  #     - .:/home/django/
+  #   # ports:
+  #   #   - 5001:5001
+  #   depends_on:
+  #     - db
+  #     - django_web
+  #     - redis
+
+  # nginx:
+  #   build: ./nginx
+  #   ports:
+  #     - 5000:8080
+  #   depends_on:
+  #     - django_web
+  #     - django_channels
+    
+  
+  # ngrok:
+  #     image: ngrok/ngrok:latest
+  #     command:
+  #         - "start"
+  #         - "--all"
+  #         - "--config"
+  #         - "/etc/ngrok.yml"
+  #     volumes:
+  #         - ./ngrok.yml:/etc/ngrok.yml
+  #     network_mode: "host"
+  #     depends_on:
+  #       - django_web 

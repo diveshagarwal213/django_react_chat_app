@@ -1,0 +1,34 @@
+# Use an official Python runtime as a parent image
+FROM python:3.10.10-bullseye
+
+# Prevents Python from writing .pyc bytecode files.
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# ensures that Python doesn't buffer its output
+ENV PYTHONUNBUFFERED=1 
+
+# Install GDAL and MySQL client dependencies
+RUN apt-get update && apt-get install -y \
+    binutils \
+    libproj-dev \
+    gdal-bin \
+    libgdal-dev \
+    default-libmysqlclient-dev \
+    && apt-get clean
+    # && rm -rf /var/lib/apt/lists/*
+
+# Pip Upgrade         
+RUN pip install --upgrade pip
+
+# Create and set the working directory
+WORKDIR /home/django
+
+# Copy the requirements file into the container
+COPY Pipfile /home/django/
+COPY Pipfile.lock /home/django/
+
+# Install Application Requirements:
+RUN pip install pipenv && pipenv install --dev --system --deploy
+
+# Copy Application Code:
+COPY . /home/django/

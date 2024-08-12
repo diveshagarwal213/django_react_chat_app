@@ -46,3 +46,4 @@ lib64/
 *.local
 .tox
 ngrok.yml
+mydb

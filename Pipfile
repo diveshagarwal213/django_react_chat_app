@@ -5,6 +5,24 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+djangorestframework = "*"
+djoser = "*"
+djangorestframework-simplejwt = "*"
+pylint = "*"
+pylint-django = "*"
+drf-nested-routers = "*"
+mysqlclient = "*"
+django-cors-headers = "*"
+python-dotenv = "*"
+django-filter = "*"
+django-debug-toolbar = "*"
+channels-redis = "*"
+async-timeout = "*"
+channelsmultiplexer = "*"
+channels = {extras = ["daphne"], version = "*"}
+drf-yasg = "*"
+twilio = "*"
 
 [dev-packages]
 
