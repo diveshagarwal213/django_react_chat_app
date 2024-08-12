@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+*.env
+channels.env
+
+# Media and static files
+media/
+static/
+
+# Database
+db.sqlite3
+
+# Virtual environment
+venv/
+*.venv/
+
+# Temporary files
+*.log
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# IDE-specific files
+#.vscode/
+.idea/
+
+# Dependency directories
+bin/
+lib/
+include/
+share/
+lib64/
+
+# Project 
+*.local
+.tox
+ngrok.yml

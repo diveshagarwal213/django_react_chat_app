@@ -1,0 +1,51 @@
+{
+    "editor.multiDocumentOccurrencesHighlight": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "pylint.args": [
+        "--disable=C0111",
+        "--disable=C0301",
+        "--disable=E0307",
+        "--disable=W0718",
+        "--disable=W0223",
+        "--load-plugins=pylint_django",
+        "--django-settings-module=project.settings"
+    ],
+    "flake8.args": [
+        "--ignore=E501,W503",
+    ],
+    "cSpell.words": [
+        "asgi",
+        "boto",
+        "corsheaders",
+        "djoser",
+        "dotenv",
+        "filterset",
+        "FSSAI",
+        "Keiks",
+        "modelfields",
+        "phonenumber",
+        "pipenv",
+        "productimage",
+        "productvariant",
+        "pylint",
+        "pylintrc",
+        "rcfile",
+        "shopaddress",
+        "simplejwt",
+        "startapp",
+        "startproject",
+        "venv",
+        "viewsets",
+        "yasg"
+    ],
+}
