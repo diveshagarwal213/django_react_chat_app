@@ -20,15 +20,16 @@ from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # admin
-admin.site.site_header = "Project C"
+admin.site.site_header = "Interest App"
 admin.site.index_title = "Admin Panel"
 
 # swagger
 schema_view = get_schema_view(
     openapi.Info(
-        title="Project C API's",
+        title="Interest App API's",
         default_version="v1",
         description="API Description",
         # terms_of_service="https://www.yourapp.com/terms/",
@@ -36,7 +37,7 @@ schema_view = get_schema_view(
         # license=openapi.License(name="Your License"),
     ),
     public=True,
-    authentication_classes=[],
+    authentication_classes=[JWTAuthentication],
     permission_classes=[AllowAny],
 )
 
@@ -45,6 +46,7 @@ urlpatterns = [
     # lib urls
     path("api/auth/", include("djoser.urls.jwt")),
     # project apps urls
+    path("api/my_app/", include("my_app.urls")),
     path("api/otp/", include("otp.urls")),
     path("api/core/", include("core.urls")),
     # api docs & debug
