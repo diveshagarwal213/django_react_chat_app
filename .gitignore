@@ -4,8 +4,6 @@ __pycache__/
 *$py.class
 
 # Local development settings
-*.env
-channels.env
 
 # Media and static files
 media/
