@@ -44,6 +44,7 @@ class InterestViewSet(
 
     @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
     def accept_interest(self, *args, **kwargs):
-        interest_id = self.kwargs.get("pk")
-        Interest.objects.filter(id=interest_id).update(is_accepted=True)
+        interest = self.get_object()
+        interest.is_accepted = True
+        interest.save()
         return Response("Ok", status=status.HTTP_200_OK)

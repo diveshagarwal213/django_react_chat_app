@@ -49,6 +49,7 @@ urlpatterns = [
     path("api/my_app/", include("my_app.urls")),
     path("api/otp/", include("otp.urls")),
     path("api/core/", include("core.urls")),
+    path("chat/", include("chat.urls")),
     # api docs & debug
     path(
         "swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"

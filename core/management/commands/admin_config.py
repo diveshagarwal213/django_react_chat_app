@@ -34,6 +34,8 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING("user already exist"))
             else:
                 user = User.objects.create(
+                    first_name="admin",
+                    last_name="admin",
                     phone_number=phone_number,
                     is_staff=True,
                     is_superuser=True,
@@ -43,3 +45,37 @@ class Command(BaseCommand):
                 self.stdout.write(
                     self.style.SUCCESS("admin config applied successfully!")
                 )
+
+        #
+        demo_users = [
+            {"first_name": "John", "last_name": "Doe", "phone_number": "+91720977989"},
+            {
+                "first_name": "Alice",
+                "last_name": "Smith",
+                "phone_number": "+917809772989",
+            },
+            {
+                "first_name": "Rahul",
+                "last_name": "Sharma",
+                "phone_number": "+917909772989",
+            },
+            {
+                "first_name": "Maria",
+                "last_name": "Garcia",
+                "phone_number": "+918744964282",
+            },
+            {
+                "first_name": "Chen",
+                "last_name": "Wang",
+                "phone_number": "+918474964282",
+            },
+        ]
+        phone_numbers = [item["phone_number"] for item in demo_users]
+        demo_user_exist = User.objects.filter(phone_number__in=phone_numbers).exists()
+        if not demo_user_exist:
+            self.stdout.write(self.style.SUCCESS("creating demo users..."))
+            demo_users_objs = [User(**item) for item in demo_users]
+            User.objects.bulk_create(demo_users_objs)
+            self.stdout.write(self.style.SUCCESS("creating demo users created!"))
+        else:
+            self.stdout.write(self.style.SUCCESS("Demo Users exists!"))

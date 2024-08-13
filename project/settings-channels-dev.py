@@ -40,6 +40,7 @@ PROJECT_RUNNING_ENV = os.getenv("PROJECT_RUNNING_ENV", "dev")
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     "core",
     "otp",
     "my_app",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -91,7 +93,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "project.wsgi.application"
-
+ASGI_APPLICATION = "project.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -194,11 +196,11 @@ DJOSER = {
         "username_reset_confirm": ["rest_framework.permissions.IsAdminUser"],
         "user_delete": ["rest_framework.permissions.IsAdminUser"],
     },
-    "HIDE_USERS": False,
+    "HIDE_USERS": True,
 }
 
-# CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
@@ -246,10 +248,3 @@ CLIENT_PARTNER_URL = os.getenv("CLIENT_PARTNER_URL", "")
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "")
 TWILIO_FROM_NUMBER = os.getenv("TWILIO_FROM_NUMBER", "")
-
-CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(" ")
-CSRF_COOKIE_SECURE = os.environ.get("CSRF_COOKIE_SECURE", "") == "True"
-SESSION_COOKIE_SECURE = os.environ.get("SESSION_COOKIE_SECURE", "") == "True"
-SECURE_HSTS_PRELOAD = os.environ.get("SECURE_HSTS_PRELOAD", "") == "True"
-SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ.get("SECURE_HSTS_PRELOAD", "") == "True"
-SECURE_HSTS_SECONDS = os.environ.get("SECURE_HSTS_SECONDS", "60")

@@ -5,6 +5,7 @@ from djoser.serializers import UserSerializer as BaseUserSerializer
 from rest_framework import serializers
 
 from core.models import User
+from my_app.serializers import InterestSerializer
 from otp.models import VerifyPhoneNumber
 
 
@@ -56,3 +57,19 @@ class UserSerializer(BaseUserSerializer):
             "last_name",
         ]
         ref_name = "custom-user-serializer"
+
+
+class UserListSerializer(BaseUserSerializer):
+    sent_by = InterestSerializer(read_only=True, many=True, allow_null=True)
+    sent_to = InterestSerializer(read_only=True, many=True, allow_null=True)
+
+    class Meta(BaseUserSerializer.Meta):
+        fields = [
+            "id",
+            "phone_number",
+            "email",
+            "first_name",
+            "last_name",
+            "sent_by",
+            "sent_to",
+        ]
