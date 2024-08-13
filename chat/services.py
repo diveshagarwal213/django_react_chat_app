@@ -19,12 +19,10 @@ class WebSocketNotificationService:
         # event_types
         self.event_type_send_ws_notification = "send_ws_notification"
 
-    def send_update_interest_notification(self, user_id):
+    def send_notification(self, user_id, text="UPDATE_INTEREST"):
         group_name = GetGroupNames.get_user_personal_group(user_id=user_id)
         event = {
             "type": self.event_type_send_ws_notification,
-            "text": "UPDATE_INTEREST",
+            "text": text,
         }
-        # print("event: ", event)
-        # print("group_name: ", group_name)
         async_to_sync(self.channel_layer.group_send)(group_name, event)

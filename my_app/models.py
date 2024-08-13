@@ -19,3 +19,11 @@ class Interest(models.Model):
                 name="friend_unique",
             ),
         ]
+
+
+class ChatMessage(models.Model):
+    interest = models.ForeignKey(Interest, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

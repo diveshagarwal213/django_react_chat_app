@@ -82,6 +82,16 @@ This is a scalable Django-based chat application, designed to handle both HTTP/H
      - **Redis Insight**:
        - If using the Redis stack with Redis Insight, access it at `http://localhost:8001` for a graphical interface to manage and monitor Redis.
 
+## API Documentation
+
+- **Swagger API Docs**:
+  - The application provides comprehensive API documentation using Swagger.
+  - You can access the Swagger UI at `http://localhost:5000/swagger/`.
+  - This interface allows you to explore and test the various API endpoints provided by the application.
+  - The documentation is automatically generated based on the Django REST framework views and serializers, ensuring it is always up-to-date with the latest API changes.
+  - Developers can use the Swagger UI to understand the available endpoints, required parameters, request/response formats, and authentication methods.
+
+
 ## Automated Admin and Dummy User Setup
 
 - **Admin User Creation**:
@@ -97,16 +107,16 @@ This is a scalable Django-based chat application, designed to handle both HTTP/H
 
 ## Authentication and Authorization
 
-- **OTP-Based Login**:
-  - The application utilizes OTP (One-Time Password) based authentication for user login.
-  - Users receive an OTP on their registered mobile number, which they must enter to gain access to their account.
-  - This method enhances security by ensuring that only users with access to the registered phone number can log in.
+- **OTP-Based Authentication**:
+  - The application employs a passwordless authentication system using One-Time Passwords (OTP) for login and signup.
+  - Users receive an OTP via their registered phone number, which they can use to authenticate and access their account.
+  - This method enhances security by eliminating the need for passwords, reducing the risk of password-related vulnerabilities.
 
 - **JWT for Authorization**:
-  - For authorization, the application employs JWT (JSON Web Tokens).
-  - After successful OTP-based authentication, a JWT is issued to the user.
-  - This token is then used to authorize subsequent requests, ensuring that only authenticated users can access protected resources.
-  - The JWT contains user-specific claims and is signed using a secret key, providing a secure way to validate user sessions.
+  - For authorization, the application uses JSON Web Tokens (JWT).
+  - Upon successful authentication via OTP, a JWT is issued to the user, which they can use to access protected resources within the application.
+  - JWTs ensure that only authenticated users can perform certain actions or access specific areas of the application.
+  - The tokens are securely stored on the client side and included in the headers of HTTP requests to authorize access.
 
 ## Django Apps and Models
 
