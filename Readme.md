@@ -144,4 +144,30 @@ The project is organized into several Django apps, each with specific responsibi
     - Handles real-time communication through WebSocket connections.
     - Integrates with the Django Channels framework to manage chat sessions, broadcasts, and other real-time features.
 
-This organization ensures that different aspects of the application are modular and maintainable, with each app focusing on its specific domain of functionality.
+## Incomplete Aspects and Potential Next Steps
+
+### Incomplete Aspects
+- **Test Scripts**: 
+  - The application currently has pending test scripts that need to be implemented.
+
+### Potential Next Steps
+
+1. **User List Filters**:
+   - Implement filters to search the user list by name, email, or phone number.
+   - This feature would enhance user management and improve the overall user experience by making it easier to find specific users.
+
+2. **Geolocation-Based User Discovery**:
+   - Introduce geolocation functionality to identify and display nearby users.
+   - This could be particularly useful for features like local networking or location-based services within the application.
+
+3. **In-App and External Notifications**:
+   - Add support for in-app notifications or integrate external notification services (e.g., push notifications, SMS) to alert users of new messages.
+   - This feature would ensure that users are promptly informed of new activity, even when they are not actively using the app.
+
+4. **Media and Document Sharing**:
+   - Extend the application to support sending videos, images, and documents.
+   - Use AWS S3 or another cloud storage service provider for storing media and documents securely and efficiently.
+
+5. **Group Messaging and Channel Support**:
+   - Develop group messaging and channel support to allow users to communicate in larger groups or within specific channels.
+   - This feature would broaden the application's use cases, making it suitable for both personal and professional communication scenarios.
