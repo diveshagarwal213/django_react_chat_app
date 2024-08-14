@@ -4,6 +4,11 @@
 
 This is a scalable Django-based chat application, designed to handle both HTTP/HTTPS and WebSocket connections efficiently using Docker. The project is structured to run separate containers for different services like `Django Web`, `Django Channels`, `Redis`, `MySQL`, and `Nginx`.
 
+### Project Demo
+A demo video of the project has been created to showcase its features and functionality. You can watch the demo on [Google Drive](https://drive.google.com/drive/folders/135qFeffy62NZc_xcohyS0oyRSrVn66kg?usp=sharing).
+
+### Frontend Repository
+The frontend of this application is developed using Vite, TypeScript, and React. You can find the source code and further details in the [Frontend Repository](https://github.com/diveshagarwal213/django_react_chat_app_frontend).
 ## Features
 
 - **Dockerized Environment**: The application runs within a Docker environment, facilitating easy setup and scalability.
